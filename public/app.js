@@ -16460,9 +16460,9 @@ function hideUserPill(){ const pill=$('#userPill'); if(pill) pill.style.display=
 // browser dropped it and the overlay just sat there (issue #43).
 // ============================================================
 const GH_OAUTH = {
-  clientId: 'Ov23liCukvrI3Zs9p3Px',
-  workerUrl: 'https://mindspark-oauth.githubpage.workers.dev/',
-  appOrigin: 'https://mindspark.githubpage.workers.dev'
+  clientId: '',
+  workerUrl: '',
+  appOrigin: 'https://mind.supertato.top'
 };
 function oauthConfigured(){
   if(/(^|\.)github\.io$/.test(location.hostname)) return false;
