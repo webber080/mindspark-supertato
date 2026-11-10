@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "mindspark",
+  "name": "mindspark-supertato",
   "compatibility_date": "2026-06-11",
   "observability": {
     "enabled": true
@@ -10,5 +10,11 @@
   },
   "compatibility_flags": [
     "nodejs_compat"
+  ],
+  "routes": [
+    {
+      "pattern": "mind.supertato.top",
+      "custom_domain": true
+    }
   ]
 }
