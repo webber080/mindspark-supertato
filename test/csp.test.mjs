@@ -56,10 +56,7 @@ const headersPolicy = () => {
 // The Worker origin the static builds talk to for OAuth and live collaboration.
 // Server mode disables both (collabAvailable() requires MODE==='cloud'), which
 // is why server.js legitimately omits these two.
-const WORKER_ONLY = [
-  'https://mindspark-oauth.githubpage.workers.dev',
-  'wss://mindspark-oauth.githubpage.workers.dev',
-];
+const WORKER_ONLY = [];
 
 describe('Content-Security-Policy stays in sync across the three deployments', () => {
   test('every fetch directive matches, apart from the Worker origin', () => {
