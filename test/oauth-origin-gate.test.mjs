@@ -21,14 +21,16 @@ const configured = (location, GH_OAUTH = SHIPPED) =>
 const at = (origin) => { const u = new URL(origin); return { origin: u.origin, hostname: u.hostname }; };
 
 describe('oauthConfigured - the button exists only on the origin the worker delivers to', () => {
-  test('the shipped config names an appOrigin, and it is the maintainer deployment', () => {
+  test('the shipped config is pinned to our domain with OAuth disabled', () => {
     assert.ok(SHIPPED.appOrigin, 'appOrigin must ship alongside clientId/workerUrl');
     assert.equal(new URL(SHIPPED.appOrigin).origin, SHIPPED.appOrigin, 'appOrigin is a bare origin');
-    assert.notEqual(new URL(SHIPPED.workerUrl).origin, SHIPPED.appOrigin, 'the app and the worker are two deploys');
+    assert.equal(SHIPPED.appOrigin, 'https://mind.supertato.top');
+    assert.equal(SHIPPED.clientId, '');
+    assert.equal(SHIPPED.workerUrl, '');
   });
 
-  test('true on the maintainer deployment itself', () => {
-    assert.equal(configured(at(SHIPPED.appOrigin)), true);
+  test('false on our domain until our own OAuth worker is configured', () => {
+    assert.equal(configured(at(SHIPPED.appOrigin)), false);
   });
 
   test('false on localhost, on a fork\'s domain, and on any other origin (the #43 cases)', () => {
